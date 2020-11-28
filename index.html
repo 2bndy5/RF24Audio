@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RF24Audio
-   &#160;<span id="projectnumber">v1.0.72b98ae</span>
+   &#160;<span id="projectnumber">v1.0.caebc15</span>
    </div>
    <div id="projectbrief">Arduino Audio Streaming Realtime with NRF24L01 radios</div>
   </td>
@@ -112,7 +112,21 @@ Configuration and Setup</h1>
 Advanced Usage</h1>
 <p>The radio pipes are defined as follows. For more complex multicast scenarios, radios can listen on any combination of pipes. <br  />
  Use the getAddress(); function to access the address array.<br  />
- </p><div class="fragment"><div class="line"><span class="keyword">const</span> uint64_t pipes[14] = { 0xABCDABCD71LL, 0x544d52687CLL, 0x544d526832LL, 0x544d52683CLL,0x544d526846LL, 0x544d526850LL,0x544d52685ALL, 0x544d526820LL, 0x544d52686ELL, 0x544d52684BLL, 0x544d526841LL, 0x544d526855LL,0x544d52685FLL,0x544d526869LL};</div>
+ </p><div class="fragment"><div class="line"><span class="keyword">const</span> uint64_t pipes[14] = {0xABCDABCD71LL,</div>
+<div class="line">                            0x544d52687CLL,</div>
+<div class="line">                            0x544d526832LL,</div>
+<div class="line">                            0x544d52683CLL,</div>
+<div class="line">                            0x544d526846LL,</div>
+<div class="line">                            0x544d526850LL,</div>
+<div class="line">                            0x544d52685ALL,</div>
+<div class="line">                            0x544d526820LL,</div>
+<div class="line">                            0x544d52686ELL,</div>
+<div class="line">                            0x544d52684BLL,</div>
+<div class="line">                            0x544d526841LL,</div>
+<div class="line">                            0x544d526855LL,</div>
+<div class="line">                            0x544d52685FLL,</div>
+<div class="line">                            0x544d526869LL</div>
+<div class="line">                           };</div>
 </div><!-- fragment --><p> By default, all radios will open the same reading &amp; writing pipes on the first two addresses.<br  />
  Any radio that wishes to transmit, will reverse the addresses on the first two pipes, and begin to transmit to all the other nodes. <br  />
  Every radio will automatically be assigned the first two addresses, then one of the remaining addresses as a private channel, based on its radio number: <br  />
@@ -123,7 +137,7 @@ Advanced Usage</h1>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 28 2020 22:53:41 for RF24Audio by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+Generated on Sat Nov 28 2020 22:59:23 for RF24Audio by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
 </small></address>
 </body>
 </html>
