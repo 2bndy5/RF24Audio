@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RF24Audio
-   &#160;<span id="projectnumber">v1.0.04dba3a</span>
+   &#160;<span id="projectnumber">v1.0.aebf016</span>
    </div>
    <div id="projectbrief">Arduino Audio Streaming Realtime with NRF24L01 radios</div>
   </td>
@@ -70,56 +70,56 @@ $(function() {
 <div class="contents">
 <p>This sketch is intended to demonstrate the most basic functionality of the audio library.</p>
 <div class="fragment"><div class="line"> </div>
-<div class="line">/* RF24 Audio Library TMRh20 2014</div>
+<div class="line"><span class="comment">/* RF24 Audio Library TMRh20 2014</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">This sketch is intended to demonstrate the most basic functionality of the audio library.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Requirements:</span></div>
+<div class="line"><span class="comment">2 Arduinos (Uno,Nano,Mega, etc supported)</span></div>
+<div class="line"><span class="comment">2 NRF24LO1 Radio Modules</span></div>
+<div class="line"><span class="comment">1 or more input devices (microphone, ipod, etc)</span></div>
+<div class="line"><span class="comment">1 or more output devices (speaker, amplifier, etc)</span></div>
+<div class="line"><span class="comment">1 or more external buttons or switches to control recording/volume/etc.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Setup:</span></div>
+<div class="line"><span class="comment">1. Change the CE,CS pins below to match your chosen pins (I use 7,8 on 328 boards, and 48,49 on Mega boards)</span></div>
+<div class="line"><span class="comment">2. Connect buttons as desired to the button pins listed below.</span></div>
+<div class="line"><span class="comment">2. Upload this sketch to two or more devices</span></div>
+<div class="line"><span class="comment">3. Use external buttons to control all devices</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Default Pin Selections:</span></div>
+<div class="line"><span class="comment">Speaker: pins 9,10 on UNO, Nano,  pins 11,12 on Mega 2560</span></div>
+<div class="line"><span class="comment">Input/Microphone: Analog pin A0 on all boards</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Transmit button: Pin A1</span></div>
+<div class="line"><span class="comment">VolumeUp button: Pin A2</span></div>
+<div class="line"><span class="comment">VolumeDn button: Pin A3</span></div>
+<div class="line"><span class="comment">Remote Transmission: Pin A4</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">Note: See http://arduino.cc/en/Tutorial/InputPullupSerial for info on how to wire the buttons to the pins</span></div>
+<div class="line"><span class="comment">Note: Pin selections can be overridden by modifying the userConfig.h file included with the library</span></div>
+<div class="line"><span class="comment">*/</span></div>
 <div class="line"> </div>
-<div class="line">This sketch is intended to demonstrate the most basic functionality of the audio library.</div>
 <div class="line"> </div>
-<div class="line">Requirements:</div>
-<div class="line">2 Arduinos (Uno,Nano,Mega, etc supported)</div>
-<div class="line">2 NRF24LO1 Radio Modules</div>
-<div class="line">1 or more input devices (microphone, ipod, etc)</div>
-<div class="line">1 or more output devices (speaker, amplifier, etc)</div>
-<div class="line">1 or more external buttons or switches to control recording/volume/etc.</div>
+<div class="line"><span class="preprocessor">#include &lt;RF24.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;SPI.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="RF24Audio_8h.html">RF24Audio.h</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line">Setup:</div>
-<div class="line">1. Change the CE,CS pins below to match your chosen pins (I use 7,8 on 328 boards, and 48,49 on Mega boards)</div>
-<div class="line">2. Connect buttons as desired to the button pins listed below.</div>
-<div class="line">2. Upload this sketch to two or more devices</div>
-<div class="line">3. Use external buttons to control all devices</div>
+<div class="line">RF24 radio(7,8);        <span class="comment">// Set radio up using pins 7 (CE) 8 (CS)</span></div>
+<div class="line"><a name="_a0"></a><a class="code" href="classRF24Audio.html">RF24Audio</a> rfAudio(radio,1); <span class="comment">// Set up the audio using the radio, and set to radio number 0.</span></div>
+<div class="line">                                <span class="comment">// Setting the radio number is only important if one-to-one communication is desired</span></div>
+<div class="line">                <span class="comment">// in a multi-node radio group. See the privateBroadcast() function.</span></div>
 <div class="line"> </div>
-<div class="line">Default Pin Selections:</div>
-<div class="line">Speaker: pins 9,10 on UNO, Nano,  pins 11,12 on Mega 2560</div>
-<div class="line">Input/Microphone: Analog pin A0 on all boards</div>
+<div class="line"><span class="keywordtype">void</span> setup() {          </div>
 <div class="line"> </div>
-<div class="line">Transmit button: Pin A1</div>
-<div class="line">VolumeUp button: Pin A2</div>
-<div class="line">VolumeDn button: Pin A3</div>
-<div class="line">Remote Transmission: Pin A4</div>
-<div class="line"> </div>
-<div class="line">Note: See http://arduino.cc/en/Tutorial/InputPullupSerial for info on how to wire the buttons to the pins</div>
-<div class="line">Note: Pin selections can be overridden by modifying the userConfig.h file included with the library</div>
-<div class="line">*/</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">#include &lt;RF24.h&gt;</div>
-<div class="line">#include &lt;SPI.h&gt;</div>
-<div class="line">#include &lt;RF24Audio.h&gt;</div>
-<div class="line"> </div>
-<div class="line">RF24 radio(7,8);                // Set radio up using pins 7 (CE) 8 (CS)</div>
-<div class="line">RF24Audio rfAudio(radio,1);     // Set up the audio using the radio, and set to radio number 0.</div>
-<div class="line">                                // Setting the radio number is only important if one-to-one communication is desired</div>
-<div class="line">                                // in a multi-node radio group. See the privateBroadcast() function.</div>
-<div class="line"> </div>
-<div class="line">void setup() {                  </div>
-<div class="line"> </div>
-<div class="line">  rfAudio.begin();              // The only thing to do is initialize the library.</div>
+<div class="line">  rfAudio.begin();      <span class="comment">// The only thing to do is initialize the library.</span></div>
 <div class="line"> </div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line">void loop() {</div>
+<div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line">  </div>
-<div class="line">  // Audio playback and button handling is all managed internally.</div>
-<div class="line">  // In this example, the radio is controlled by external buttons, so there is nothing to do here</div>
+<div class="line">  <span class="comment">// Audio playback and button handling is all managed internally.</span></div>
+<div class="line">  <span class="comment">// In this example, the radio is controlled by external buttons, so there is nothing to do here</span></div>
 <div class="line">  </div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -127,19 +127,21 @@ $(function() {
 <div class="line"> </div>
 <div class="line"> </div>
 <div class="line"> </div>
-<div class="line">/* Documentation and References:</div>
-<div class="line"> </div>
-<div class="line">References:</div>
-<div class="line">All Library documentation: http://tmrh20.github.io/</div>
-<div class="line">New (2014) RF24 Audio Library: https://github.com/TMRh20/RF24Audio</div>
-<div class="line">Optimized (2014) RF24 Lib Source Code: https://github.com/TMRh20/RF24 </div>
-<div class="line">Optimized (2014) RF24 Network Lib: https://github.com/TMRh20/RF24Network</div>
-<div class="line"> </div>
-<div class="line">*/</div>
+<div class="line"><span class="comment">/* Documentation and References:</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">References:</span></div>
+<div class="line"><span class="comment">All Library documentation: http://tmrh20.github.io/</span></div>
+<div class="line"><span class="comment">New (2014) RF24 Audio Library: https://github.com/TMRh20/RF24Audio</span></div>
+<div class="line"><span class="comment">Optimized (2014) RF24 Lib Source Code: https://github.com/TMRh20/RF24 </span></div>
+<div class="line"><span class="comment">Optimized (2014) RF24 Network Lib: https://github.com/TMRh20/RF24Network</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">*/</span></div>
 </div><!-- fragment --> </div><!-- contents -->
+<div class="ttc" id="aRF24Audio_8h_html"><div class="ttname"><a href="RF24Audio_8h.html">RF24Audio.h</a></div><div class="ttdoc">Class declaration for RF24Audio Library.</div></div>
+<div class="ttc" id="aclassRF24Audio_html"><div class="ttname"><a href="classRF24Audio.html">RF24Audio</a></div><div class="ttdoc">TMRh20 2014 - RF24Audio: Arduino Realtime Audio Streaming library.</div><div class="ttdef"><b>Definition:</b> RF24Audio.h:23</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 3 2020 01:45:54 for RF24Audio by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+Generated on Thu Dec 3 2020 02:17:43 for RF24Audio by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
 </small></address>
 </body>
 </html>

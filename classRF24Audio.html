@@ -23,7 +23,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">RF24Audio
-   &#160;<span id="projectnumber">v1.0.04dba3a</span>
+   &#160;<span id="projectnumber">v1.0.aebf016</span>
    </div>
    <div id="projectbrief">Arduino Audio Streaming Realtime with NRF24L01 radios</div>
   </td>
@@ -107,6 +107,8 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>TMRh20 2014 - <a class="el" href="classRF24Audio.html" title="TMRh20 2014 - RF24Audio: Arduino Realtime Audio Streaming library.">RF24Audio</a>: Arduino Realtime Audio Streaming library. </p>
 <p>This class implements an Audio Streaming library using nRF24L01(+) radios driven by the <a href="https://github.com/TMRh20/RF24">Optimized RF24 library</a>. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="GettingStarted_8ino-example.html#_a0">GettingStarted.ino</a>, <a class="el" href="Minimal_8ino-example.html#_a0">Minimal.ino</a>, <a class="el" href="PrivateChannels_8ino-example.html#_a0">PrivateChannels.ino</a>, and <a class="el" href="PrivateGroups_8ino-example.html#_a0">PrivateGroups.ino</a>.</dd>
+</dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1050247d3d758ca93fad8cb49c766b15"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1050247d3d758ca93fad8cb49c766b15">&#9670;&nbsp;</a></span>RF24Audio()</h2>
@@ -187,7 +189,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Control of Private or Public Communication. </p>
 <p>Call this function to establish private communication between nodes in a radio group, or to switch back to public transmission. </p><dl class="section note"><dt>Note</dt><dd>Using a radioID of 255 will disable private communication and broadcast to all nodes</dd></dl>
-<div class="fragment"><div class="line">rfAudio.broadcast(1);         <span class="comment">// Only transmit audio to radio number 1</span></div>
+<div class="fragment"><div class="line">rfAudio.broadcast(1);     <span class="comment">// Only transmit audio to radio number 1</span></div>
 <div class="line">rfAudio.broadcast(255);  <span class="comment">// Transmit audio to all radios in the group</span></div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -332,7 +334,7 @@ Public Member Functions</h2></td></tr>
 <div class="ttc" id="aclassRF24Audio_html"><div class="ttname"><a href="classRF24Audio.html">RF24Audio</a></div><div class="ttdoc">TMRh20 2014 - RF24Audio: Arduino Realtime Audio Streaming library.</div><div class="ttdef"><b>Definition:</b> RF24Audio.h:23</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 3 2020 01:45:54 for RF24Audio by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+Generated on Thu Dec 3 2020 02:17:43 for RF24Audio by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
 </small></address>
 </body>
 </html>
