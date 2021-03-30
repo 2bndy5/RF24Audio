@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pipes_7',['pipes',['../userConfig_8h.html#a7f088b1645731f3771cdd4b766b17262',1,'userConfig.h']]]
+  ['getaddress_7',['getAddress',['../classRF24Audio.html#ad363ce01b8ff0a3e8c7e60f9caa9c43e',1,'RF24Audio']]]
 ];
